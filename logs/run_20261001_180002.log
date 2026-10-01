@@ -1,0 +1,55 @@
+2026-10-01 18:00:10,568 | INFO | __main__ | === CLI run started ===
+2026-10-01 18:00:10,569 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-01 18:00:10,569 | INFO | hr_assistant.tracing | LangSmith tracing is OFF (set LANGSMITH_TRACING=true in .env to enable)
+2026-10-01 18:00:10,570 | INFO | hr_assistant.pipeline | No vector store on disk, building one from scratch
+2026-10-01 18:00:10,570 | INFO | hr_assistant.document_loader | Loading document from 'data\hr_policy.txt'
+2026-10-01 18:00:10,587 | INFO | hr_assistant.document_loader | Loaded 1 document(s)
+2026-10-01 18:00:10,588 | INFO | hr_assistant.splitter | Split document(s) into 14 chunk(s)
+2026-10-01 18:00:10,588 | INFO | hr_assistant.vector_store | Embedding 14 chunk(s) and building FAISS index...
+2026-10-01 18:00:10,589 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-01 18:00:13,320 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2026-10-01 18:00:13,321 | INFO | faiss.loader | Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-10-01 18:00:13,321 | INFO | faiss.loader | Loading faiss.
+2026-10-01 18:00:14,069 | INFO | faiss.loader | Successfully loaded faiss.
+2026-10-01 18:00:14,251 | INFO | hr_assistant.vector_store | FAISS index built in memory
+2026-10-01 18:00:14,255 | INFO | hr_assistant.vector_store | Saved FAISS index to 'data\faiss_index'
+2026-10-01 18:00:14,257 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-01 18:00:14,266 | INFO | hr_assistant.llm | Initializing LLM 'openai/gpt-oss-20b'
+2026-10-01 18:00:15,269 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-01 18:00:15,276 | INFO | hr_assistant.agent | HR agent ready
+2026-10-01 18:00:15,277 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-01 18:00:15,277 | INFO | hr_assistant.pipeline | User question: How many paid annual leave days?
+2026-10-01 18:00:15,795 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:16,342 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:16,372 | INFO | hr_assistant.tools | search_hr_policy called with query: How many paid annual leave days?
+2026-10-01 18:00:16,876 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-01 18:00:17,338 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:17,343 | INFO | hr_assistant.pipeline | Final answer: All full‑time employees are entitled to **18 days of paid annual leave per calendar year**.
+2026-10-01 18:00:17,571 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:17,574 | INFO | __main__ | === CLI run finished ===
+2026-10-01 18:00:17,574 | INFO | hr_assistant.pipeline | User question: What is the notice period during probation?
+2026-10-01 18:00:17,856 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:18,468 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:18,475 | INFO | hr_assistant.tools | search_hr_policy called with query: notice period during probation
+2026-10-01 18:00:22,721 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-01 18:00:23,063 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:23,070 | INFO | hr_assistant.pipeline | Final answer: During the probation period, employees who resign are required to give a **15‑day written notice**.
+2026-10-01 18:00:23,370 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:23,372 | INFO | __main__ | === CLI run finished ===
+2026-10-01 18:00:23,373 | INFO | hr_assistant.pipeline | User question: Can I work from home every day?
+2026-10-01 18:00:23,657 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:23,995 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:24,012 | INFO | hr_assistant.tools | search_hr_policy called with query: work from home policy
+2026-10-01 18:00:24,507 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-01 18:00:25,170 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:25,173 | INFO | hr_assistant.pipeline | Final answer: I’m sorry, but the company policy does not allow working from home every day. According to the **Work‑From‑Home Policy**:
+
+- Employees may work from home for **up to 2 days per week**.  
+- Each remote day must be **approved in advance by your reporting manager**.  
+- If you want a fully remote arrangement (working from home all the time), you need **written approval from the department head**.  
+- While working remotely you must remain available during the core hours of **10:00 AM to 4:00 PM**.
+
+So, unless you obtain the necessary approvals for a full‑time remote arrangement, you can only work from home a maximum of two days each week.
+2026-10-01 18:00:25,523 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:00:25,534 | INFO | __main__ | === CLI run finished ===

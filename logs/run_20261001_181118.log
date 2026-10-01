@@ -1,0 +1,30 @@
+2026-10-01 18:11:23,680 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-01 18:11:23,681 | INFO | hr_assistant.tracing | LangSmith tracing is OFF (set LANGSMITH_TRACING=true in .env to enable)
+2026-10-01 18:11:23,682 | INFO | hr_assistant.pipeline | Vector store already exists on disk, reusing it
+2026-10-01 18:11:23,682 | INFO | hr_assistant.vector_store | Loading FAISS index from 'data\faiss_index'
+2026-10-01 18:11:23,683 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-01 18:11:23,761 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2026-10-01 18:11:23,762 | INFO | faiss.loader | Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-10-01 18:11:23,762 | INFO | faiss.loader | Loading faiss.
+2026-10-01 18:11:23,926 | INFO | faiss.loader | Successfully loaded faiss.
+2026-10-01 18:11:23,962 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-01 18:11:24,020 | INFO | hr_assistant.llm | Initializing LLM 'openai/gpt-oss-20b'
+2026-10-01 18:11:25,007 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-01 18:11:25,016 | INFO | hr_assistant.agent | HR agent ready
+2026-10-01 18:11:25,016 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-01 18:11:57,497 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-01 18:11:57,717 | INFO | hr_assistant.pipeline | User question: hi
+2026-10-01 18:11:58,866 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:11:59,463 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:11:59,465 | INFO | hr_assistant.pipeline | Final answer: Hello! 👋 How can I help you today?
+2026-10-01 18:11:59,660 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:12:25,280 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-01 18:12:25,282 | INFO | hr_assistant.pipeline | User question: how many sick leaves are in annual year
+2026-10-01 18:12:25,612 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:12:26,146 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:12:26,152 | INFO | hr_assistant.tools | search_hr_policy called with query: how many sick leaves are in annual year
+2026-10-01 18:12:27,208 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-01 18:12:27,717 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-01 18:12:27,720 | INFO | hr_assistant.pipeline | Final answer: According to the HR policy, full‑time employees are entitled to **10 paid sick leave days per calendar year**.
+2026-10-01 18:12:27,946 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

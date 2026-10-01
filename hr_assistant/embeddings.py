@@ -1,4 +1,4 @@
-"""Step 3: turn text into numbers (vectors) using Jina."""
+"""Step 3: Turn text into numbers (vectors) using Jina."""
 
 
 from langchain_community.embeddings import JinaEmbeddings
